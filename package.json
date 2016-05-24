@@ -1,15 +1,11 @@
 {
-  "name": "analytics-node",
-  "repository": "git://github.com/segmentio/analytics-node",
-  "version": "2.1.0",
+  "name": "ot-analytics-node",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/opentable/analytics-node"
+  },
+  "version": "0.0.1",
   "description": "The hassle-free way to integrate analytics into any node application.",
-  "keywords": [
-    "analytics",
-    "segment.io",
-    "segmentio",
-    "client",
-    "driver"
-  ],
   "main": "lib/index.js",
   "browserify": {
     "transform": [
@@ -18,6 +14,9 @@
   },
   "bin": {
     "analytics": "bin/analytics"
+  },
+  "publishConfig": {
+    "registry": "http://artifactory.otenv.com:8081/artifactory/api/npm/npm-local"
   },
   "dependencies": {
     "clone": "~0.1.17",
@@ -39,12 +38,5 @@
     "http-proxy": "~1.11.1",
     "mocha": "1.8.1",
     "nsp": "^2.0.2"
-  },
-  "engines": {
-    "node": ">= 0.12.x"
-  },
-  "scripts": {
-    "test": "make test"
-  },
-  "license": "MIT"
+  }
 }
