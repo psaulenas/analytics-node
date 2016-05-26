@@ -40,7 +40,7 @@ function Analytics(writeKey, options){
   this.queue = [];
   this.writeKey = writeKey;
   this.discovery = options.discovery;
-  this.host = this.discovery.find(AnalyticsCollector);
+  this.host = this.discovery.find(AnalyticsCollector) || '';
   this.flushAt = Math.max(options.flushAt, 1) || 20;
   this.flushAfter = options.flushAfter || 10000;
 }
@@ -146,7 +146,7 @@ Analytics.prototype.flush = function(fn){
 
   debug('flush: %o', data);
 
-  this.host = this.discovery.find(AnalyticsCollector);
+  this.host = this.discovery.find(AnalyticsCollector) || '';
   var separator = this.host.charAt(this.host.length - 1) === '/' ? '' : '/';
 
   var req = request
@@ -30739,7 +30739,7 @@ module.exports={
     "type": "git",
     "url": "https://github.com/opentable/analytics-node"
   },
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "The hassle-free way to integrate analytics into any node application.",
   "main": "lib/index.js",
   "browserify": {
