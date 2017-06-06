@@ -13,6 +13,11 @@ var context = {
   }
 };
 
+var discofake = { 
+  find: function(){ return 'https://api.segment.io'; }
+};
+
+
 describe('Analytics', function(){
   before(function(done){
     server.app
@@ -24,7 +29,8 @@ describe('Analytics', function(){
     a = Analytics('key', {
       host: 'http://localhost:4063',
       flushAt: Infinity,
-      flushAfter: Infinity
+      flushAfter: Infinity,
+      discovery: { find: function(){return;} }
     });
   });
 
@@ -32,8 +38,8 @@ describe('Analytics', function(){
     assert.equal('function', typeof Analytics);
   });
 
-  it('should require a write key', function(){
-    assert.throws(Analytics, error("You must pass your Segment project's write key."));
+  it('should require a write key', function(){ 
+    assert.throws(Analytics, 'You must pass your project\'s write key.');
   });
 
   it('should not require the new keyword', function(){
@@ -45,7 +51,11 @@ describe('Analytics', function(){
   });
 
   it('should set default options', function(){
-    var a = Analytics('key');
+    var a = Analytics('key',{ discovery: { find: function(){
+          return 'https://api.segment.io';
+        }
+      }
+    });
     assert.equal(a.writeKey, 'key');
     assert.equal(a.host, 'https://api.segment.io');
     assert.equal(a.flushAt, 20);
@@ -54,17 +64,16 @@ describe('Analytics', function(){
 
   it('should take options', function(){
     var a = Analytics('key', {
-      host: 'a',
       flushAt: 1,
-      flushAfter: 2
+      flushAfter: 2,
+      discovery: discofake
     });
-    assert.equal(a.host, 'a');
     assert.equal(a.flushAt, 1);
     assert.equal(a.flushAfter, 2);
   });
 
   it('should keep the flushAt option above zero', function(){
-    var a = Analytics('key', { flushAt: 0 });
+    var a = Analytics('key', { flushAt: 0, discovery: discofake });
     assert.equal(a.flushAt, 1);
   });
 
@@ -131,7 +140,7 @@ describe('Analytics', function(){
       a.enqueue('type', { event: 'test' }, noop);
       var msg = a.queue[0].message;
       assert(msg.messageId);
-      assert(/node-[a-zA-Z0-9]{32}/.test(msg.messageId));
+      assert(/[a-zA-Z0-9\-]{36}/.test(msg.messageId));
     })
   });
 
