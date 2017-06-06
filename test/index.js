@@ -38,8 +38,8 @@ describe('Analytics', function(){
     assert.equal('function', typeof Analytics);
   });
 
-  it('should require a write key', function(){
-    assert.throws(Analytics, error("You must pass your Segment project's write key."));
+  it('should require a write key', function(){ 
+    assert.throws(Analytics, 'You must pass your project\'s write key.');
   });
 
   it('should not require the new keyword', function(){
@@ -140,7 +140,6 @@ describe('Analytics', function(){
       a.enqueue('type', { event: 'test' }, noop);
       var msg = a.queue[0].message;
       assert(msg.messageId);
-      console.log("MESSAGE",msg);
       assert(/[a-zA-Z0-9\-]{36}/.test(msg.messageId));
     })
   });
