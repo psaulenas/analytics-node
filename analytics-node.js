@@ -8,7 +8,7 @@ var request = require('superagent');
 require('superagent-retry')(request);
 var type = require('component-type');
 var join = require('join-component');
-var uuid = require('node-uuid');
+var uuid = require('uuid');
 var version = require('../package.json').version;
 var extend = require('lodash').extend;
 
