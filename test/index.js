@@ -129,7 +129,7 @@ describe('Analytics', function(){
       a.enqueue('type', { event: 'test', context: { name: 'travis' } }, noop);
       assert.deepEqual(a.queue[0].message.context, {
         library: {
-          name:'analytics-node',
+          name: 'analytics-node',
           version: require('../package.json').version
         },
         name: 'travis'
