@@ -16,7 +16,7 @@
     "analytics": "bin/analytics"
   },
   "publishConfig": {
-    "registry": "http://artifactory.otenv.com:8081/artifactory/api/npm/npm-local"
+    "registry": "http://artifactory.otenv.com/artifactory/api/npm/npm-virtual/"
   },
   "dependencies": {
     "clone": "~0.1.17",
