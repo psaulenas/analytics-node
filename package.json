@@ -1,10 +1,10 @@
 {
-  "name": "ot-analytics-node",
+  "name": "@opentable/ot-analytics-node",
   "repository": {
     "type": "git",
     "url": "https://github.com/opentable/analytics-node"
   },
-  "version": "0.0.6",
+  "version": "1.0.0",
   "description": "The hassle-free way to integrate analytics into any node application.",
   "main": "lib/index.js",
   "browserify": {
@@ -16,7 +16,7 @@
     "analytics": "bin/analytics"
   },
   "publishConfig": {
-    "registry": "http://artifactory.otenv.com/artifactory/api/npm/npm-virtual/"
+    "registry": "https://artifactory.otenv.com/artifactory/api/npm/npm-opentable"
   },
   "dependencies": {
     "clone": "~0.1.17",

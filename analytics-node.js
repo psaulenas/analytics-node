@@ -6293,12 +6293,12 @@ module.exports = v4;
 
 },{"./lib/bytesToUuid":27,"./lib/rng":28}],31:[function(require,module,exports){
 module.exports={
-  "name": "ot-analytics-node",
+  "name": "@opentable/ot-analytics-node",
   "repository": {
     "type": "git",
     "url": "https://github.com/opentable/analytics-node"
   },
-  "version": "0.0.6",
+  "version": "1.0.0",
   "description": "The hassle-free way to integrate analytics into any node application.",
   "main": "lib/index.js",
   "browserify": {
@@ -6310,7 +6310,7 @@ module.exports={
     "analytics": "bin/analytics"
   },
   "publishConfig": {
-    "registry": "http://artifactory.otenv.com:8081/artifactory/api/npm/npm-local"
+    "registry": "https://artifactory.otenv.com/artifactory/api/npm/npm-opentable"
   },
   "dependencies": {
     "clone": "~0.1.17",
@@ -6318,7 +6318,6 @@ module.exports={
     "component-type": "~1.0.0",
     "debug": "^2.2.0",
     "join-component": "~1.0.0",
-    "lodash": "~4.17.5",
     "lodash.assignin": "^4.2.0",
     "superagent": "^1.4.0",
     "superagent-proxy": "^1.0.0",
